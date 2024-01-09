@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>Contending for Faith</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap.css">
+   -->
+  <script src="jquery.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+  <!-- <script defer src="./js/bootstrap.js"></script> -->
+  <script defer src="myFill.js"></script> 
+  <!-- <script defer src="contendFaith.js"></script> -->
+  <!-- <script defer src="./js/jq"></script> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+
+</head>
+<body>
+  <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    /* color: #fff; */
+    text-align: center;
+  }
+
+  header {
+    background-color: #333;
+    padding: 10px;
+  }
+
+  .dashboard {
+    max-width: 800px;
+    margin: 1% auto;
+    background-color: #333;
+    padding: 0 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .h1 {
+    color: #ffd700;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<!-- <div id="dashboard">
+  <header>
+    <h1 class="h1">Welcome to Contending for Faith Game</h1>
+  </header>
+  <div class="dashboard">
+   <div class="d-flex my-1 py-0 border p-2">
+    <h1 class="h1">AIM:</h1>
+    <marquee class="text-light d-flex align-items-center" behavior="" direction="left">
+      <h6>
+        It is a bible based educative game for all families and friends of all age group it is full of fun and stimulates the desire to live life worthy of Christ calling, as we contend for Christian faith in this ungodly world, let us still keep our sanity.</h6></marquee>
+   </div>
+    <h2>Hello, Player!</h2>
+    <strong class="text-warning fs-4">Instruction on How to Play the Game:</strong>
+    <ol>
+      <li>One to two players can play the game.</li> 
+      <li>
+        You will play with dice and computer will help you dice seed by show color on game board.
+      </li>
+      <li>
+        The first player rep with "YELLOW" and second player rep with "ORANGE" color
+      </li>
+      <li>
+        Dice six qualify you to Start the game, hence place your dice seed at the Start.
+      </li>
+      <li>
+        Each player takes turn after another and obey what is in the box he/she lands.
+      </li>
+      <li>
+        The first player to reach box 50 is the winner.
+      </li>
+    </ol>
+    <hr>
+      <h2>Select the number of players to start:</h2>
+  <label for="playerSelect">Choose:</label>
+  <select id="playerSelect" class="mx-auto w-50 form-select"> -->
+    <!-- <option value="1">One Player</option> -->
+    <!-- <option value="none">Select Player Here</option>
+    <option value="2">Two Players</option>
+  </select>
+  <p id="resultMessage"></p>
+    <img class="mb-0" src="./cf/start.JPG" alt=""/>
+    <button class="d-none" id="btn-disp" onclick="startGame()">Start Game</button>
+  </div>
+</div> -->
+
+  <div class="content d-non" id="gameContent">
+    <!-- modalbox -->
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  onclick="modalBox(event)">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<!-- for modal box group -->
+
+<!-- Popup container -->
+<!-- <div id="popup" class="popup">
+  <span class="popup-text" id="popupText">Your Popup Text Here</span>
+</div> -->
+
+<section class="text-light">
+  <div class="modalStarter  1 modal fade w-100" id="modalStart"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (Start) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/start.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(1)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  2 modal fade w-100" id="modal1"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (1) Space</h1>
+          <!--<button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/1.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(2)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  3 modal fade w-100" id="modal2"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (2) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/2.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(3)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  4 modal fade w-100" id="modal3"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (3) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/3.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(4)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  5 modal fade w-100" id="modal4"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (4) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/4.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(5)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  6 modal fade w-100" id="modal5"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (5) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/5.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(6)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  7 modal fade w-100" id="modal6"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (6) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/6.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(7)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  8 modal fade w-100" id="modal7"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (7) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/7.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(8)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  9 modal fade w-100" id="modal8"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (8) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/8.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(9)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  10 modal fade w-100" id="modal9"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (9) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/9.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(10)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  11 modal fade w-100" id="modal10"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (10) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/10.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(11)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  12 modal fade w-100" id="modal11"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning text-warning" id="exampleModalLabel">Welcome to (11) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/11.JPG" alt="" width="50%">
+         <div id="option11" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div>
+            <input type="radio" id="continueOption" name="options12" value="continue"> (a) Faith of our fathers, living still for this is the only faith we have In God's ...
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options12" value="other"> (b) Faith of our fathers, living still
+            In spite of dungeon, fire and sword, ....
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(12)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <!-- <div class="modal-footer">
+        </div> --> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  13 modal fade w-100" id="modal12"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (12) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/12.JPG" alt="" width="50%">
+         <div id="option12" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options13" value="continue"> (a) Therefore leaving the principles of the doctrine of Christ, let us go on unto perfection; not laying again the foundation of repentance from dead works, and of faith toward God,
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options13" value="other"> (b) Therefore leaving the principles of the doctrine of Christ, not laying again the foundation of repentance from dead works, and of faith toward God, let us go on unto perfection;
+          </div>
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss=""  onclick="getSelectedOption(13)">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  14 modal fade w-100" id="modal13"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (13) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/13.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss=""  onclick="getSelectedOption(14)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  15 modal fade w-100" id="modal14"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (14) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between  column-gap-2 ">
+           <img class="mb-0" src="./cf/14.JPG" alt="" width="50%">
+           <div id="option15" class="text-center w-50" style="background-color: black;"> 
+            <h6>Please choose an option:</h6>
+            <!-- <div class=""> -->
+             <div class="my-2 mt-3">
+               <input type="radio" id="continueOption" name="options15" value="continue"> (a) Elijah and Job
+             </div>
+             <div class="my-3">
+               <input type="radio" id="otherOption" name="options15" value="other"> (b) David and Abraham
+             </div>
+             <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(15)" data-bs-dismiss="">Continue</button>
+            <!-- </div> -->
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  16 modal fade w-100" id="modal15"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (15) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/15.JPG" alt="" width="50%">
+         <div id="option15" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div>
+            <h6><input type="radio" id="continueOption" name="options16" value="continue"> (a) For Men of Faith:<br/> Moses, Daniel, Abraham, Paul and David.</h6>
+            <h6>For Women of Faith:<br/> Ruth and Esther.</h6>
+          </div>
+          <div>
+            <h6><input type="radio" id="otherOption" name="options16" value="other"> (b) For Men of Faith:<br/> Saul, Elijah, Job, Thomas and David.</h6>
+            <h6>For Women of Faith:<br/> Lot's Wife and Jezebel.</h6>
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus" onclick="getSelectedOption(16)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  17 modal fade w-100" id="modal16"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (16) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/16.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss=""  onclick="getSelectedOption(17)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  18 modal fade w-100" id="modal17"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered"  >
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (17) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/17.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal" onclick="getSelectedOption(18)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  19 modal fade w-100" id="modal18"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (18) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/18.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(19)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  20 modal fade w-100" id="modal19"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (19) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/19.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50 " style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-4">
+            <input type="radio" id="continueOption" name="options20" value="continue"> (a) Adam
+          </div>
+          <div class="my-2">
+            <input type="radio" id="otherOption" name="options20" value="other"> (b) Abraham
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(20)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  21 modal fade w-100" id="modal20"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (20) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/20.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(21)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  22 modal fade w-100" id="modal21"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (21) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/21.JPG" alt="" width="50%">
+         <div id="option21" class="text-center w-50" class="my-2" style="background-color: black;">
+          <h6>Please choose an option:</h6>
+          <div class="my-4">
+            <input type="radio" id="continueOption" name="options22" value="continue"> (a) A grateful woman of issue of blood 
+          <div class="my-2">
+            <input type="radio" id="otherOption" name="options22" value="other"> (b) A grateful Samaritan Leper 
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus" onclick="getSelectedOption(22)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="modalStarter  23 modal fade w-100" id="modal22" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (22) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+           <img class="mb-0" src="./cf/22.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(23)" data-bs-dismiss="">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  24 modal fade w-100" id="modal23"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (23) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/23.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options24" value="continue"> (a) i. Fliers of the Gospel of Peace, ii. Bullet-proof of Hope, iii. Helmet of Truth, iv. Singing, v. Belt of Righteousness.
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options24" value="other"> (b)  i. Shoes of the Gospel of Peace, ii. Breastplate of Righteousness, iii. Helmet of Salvation, iv. Prayer, v. Belt of Truth.
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(24)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  25 modal fade w-100" id="modal24"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (24) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/24.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss=""  onclick="getSelectedOption(25)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  26 modal fade w-100" id="modal25" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (25) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-center column-gap-2 ">
+           <img class="mb-0" src="./cf/25.JPG" alt="" width="50%">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" onclick="getSelectedOption(26)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  27 modal fade w-100" id="modal26"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (26) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/26.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(27)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  28 modal fade w-100" id="modal27"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (27) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/27.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(28)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  29 modal fade w-100" id="modal28" tabindex="-1" style="background-color: transparent;">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (28) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-center column-gap-2 ">
+           <img class="mb-0" src="./cf/28.JPG" alt="" width="50%">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" onclick="getSelectedOption(29)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  30 modal fade w-100" id="modal29"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (29) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/29.JPG" alt="" width="50%">
+         <div id="option29" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options30" value="continue"> (a)
+            Whereunto thou art also called, Fight the good fight of faith, lay hold on eternal life, and hast professed a good profession before many witnesses.
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options30" value="other"> (b)
+            Fight the good fight of faith, lay hold on eternal life, whereunto thou art also called, and hast professed a good profession before many witnesses.
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(30)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  31 modal fade w-100" id="modal30"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (30) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/30.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(31)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  32  modal fade w-100" id="modal31"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (31) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/31.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(32)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  33 modal fade w-100" id="modal32"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (32) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-around">
+           <img class="mb-0" src="./cf/32.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options33" value="continue"> (a)
+            And did not he make one? Yet had he the residue of the spirit. And wherefore one? That he might seek a godly seed. Therefore take heed to your spirit, and let none deal treacherously against the wife of his youth. 
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options33" value="other"> (b)
+            And wherefore one? That he might seek a godly seed. And did not he make one? Yet had he the residue of the spirit. And let none deal treacherously against the wife of his youth, Therefore take heed to your spirit 
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(33)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  34 modal fade w-100" id="modal33"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (33) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/33.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(34)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  35 modal fade w-100" id="modal34"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (34) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between column-gap-2 align-items-center">
+           <img class="mb-0" src="./cf/34.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options35" value="continue"> (a)
+            i.Religious Syncretism, ii. Spiritual Fatigue 
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options35" value="other"> (b) i.Prayer and Meditation, ii. Studying Scripture
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(35)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  36 modal fade w-100" id="modal35"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (35) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/35.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(36)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  37 modal fade w-100" id="modal36"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (36) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/36.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(37)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  38 modal fade w-100" id="modal37"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (37) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/37.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options38" value="continue"> (a)
+            Now faith is the substance of things hoped for, the evidence of things not seen.  
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options38" value="other"> (b)
+            Faith is now the evidence of things hoped for, the substance of things not seen.
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(38)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  39 modal fade w-100" id="modal38"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (38) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/38.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(39)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  40 modal fade w-100" id="modal39"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (39) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/39.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options40" value="continue"> (a) Father Abraham had many sons,
+            Abraham sons had Father Many,
+            Every one is of them and so are you,
+            So praise the Lord let's just praise
+            Right arm
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options40" value="other"> (b) 
+            Father Abraham had many sons,
+            Many sons had Father Abraham,
+            I am one of them and so are you,
+            So let's just praise the Lord
+            Right arm
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(40)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  41 modal fade w-100" id="modal40"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (40) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/40.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(41)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  42 modal fade w-100" id="modal41"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (41) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/41.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(42)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  43 modal fade w-100" id="modal42"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (42) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/42.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(43)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  44 modal fade w-100" id="modal43"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (43) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/43.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(44)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  45 modal fade w-100" id="modal44"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (44) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/44.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(45)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  46 modal fade w-100" id="modal45"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (45) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/45.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(46)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  47 modal fade w-100" id="modal46"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (46) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/46.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options47" value="continue"> (a) Hebrews 11:6 (KJV)
+            But without faith it is possible to please him: for he that cometh to God must thought that he is, a friend of them that searching him.              
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options47" value="other"> (b)
+            Hebrews 11:6 (KJV)
+            But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him.
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(47)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  48 modal fade w-100" id="modal47"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (47) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/47.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal"  onclick="getSelectedOption(48)">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  49 modal fade w-100" id="modal48"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (48) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/48.JPG" alt="" width="50%">
+         <div id="option19" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options49" value="continue"> (a) Jude 1:3 (KJV)
+            Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints.
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options49" value="other"> (b)
+            Jude 1:3 (KJV)
+            Beloved, and exhort you that ye should earnestly contend for your needs which was once delivered unto the saints. When I gave all my energy to send unto you of the common salvation, it was needful for me to write unto you.
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(49)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <!-- <div class="modal-footer">
+        </div> --> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  50 modal fade w-100" id="modal49"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (49) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <div class="d-flex justify-content-between">
+           <img class="mb-0" src="./cf/49.JPG" alt="" width="50%">
+         <div id="option49" class="text-center w-50" style="background-color: black;"> 
+          <h6>Please choose an option:</h6>
+          <div class="my-2">
+            <input type="radio" id="continueOption" name="options50" value="continue"> (a) i. Christopher Hitchens (1949–2011), ii. Daniel Dennett, iii. Sam Harris. iv. Bill Maher, v. Richard Dawkins.
+          </div>
+          <div>
+            <input type="radio" id="otherOption" name="options50" value="other"> (b)
+            i. Desmond Tutu (1931–2021), ii. Mother Teresa (1910–1997), iii. Billy Graham (1918–2018). iv. Pope Francis (Jorge Mario Bergoglio), v. T.D. Jakes (Thomas Dexter Jakes).
+          </div>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(50)" data-bs-dismiss="">Continue</button>
+         </div>
+         </div>
+        </div>
+        <!-- <!-- <div class="modal-footer">
+        </div> --> -->
+      </div>
+    </div>
+  </div>
+  <div class="modalStarter  51 modal fade w-100" id="modal50" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered"  >
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-header">
+          <h1 class="modal-title fw-bold fs-5 text-warning" id="exampleModalLabel">Welcome to (50) Space</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-0">
+         <img class="mb-0" src="./cf/50.JPG" alt="" width="50%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal">Continue</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <table class="" id="table-display">
+      <tr id="forCol6">
+        <td class="editable" colspan="" id="dispDiceRolOne" contenteditable="false" onkeydown="forEntr(event)" onclick="rolDicePlayerOne()"><img style="width: 100%; height:15vh;" src="./cf/dice_ass/dice-rest-state.JPG" alt=""></td>
+        <td colspan="8" class=" bg-dark w-100">
+          <!-- <h4 class="text-light fw-bold border">Welcome to Contending For Faith Game</h4> -->
+          <div class="text-warning d-flex justify-content-between px-3">
+            <div class="player1">
+              <h6 class="my-0 py-0"><span id="playerOneName"></span></h6>
+              <h5 class="my-0 py-0 text-light">Score: <span id="pTwoScore">0</span></h5>
+            </div>
+            <!-- <div class="music-player">
+              <audio id="audioPlayer">
+                <source src="./cf/dice_ass/winning clapp.wav" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
+            
+              <div class="controls">
+                <button id="prevBtn">Prev Song</button>
+                <button id="playBtn">Play</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="stopBtn">Stop</button>
+                <button id="nextBtn">Next Song</button>
+              </div>
+            </div> -->
+            <h3 class="h3">
+              Next to Dice is: <span class="text-light" id="playerTurn"></span>
+            </h3>
+            <div class="player2">
+              <h6 class="my-0 py-0"><span id="playerTwoName"></span></h6>
+              <h5 class="my-0 py-0 text-light">Score: <span id="pOneScore">0</span></h5>
+            </div>
+          </div>
+        </td>
+        <!-- <td colspan="" id="dispDiceRolTwo" onclick="rolDicePlayerTwo()"><img style="width: 100%; height:15vh;" src="./cf/dice_ass/dice-rest-state.JPG" alt=""></td> -->
+        <td id="for50" rowspan=""><img style="width: 90%;" id="forImgFifty" src="./cf/50.JPG" alt=""></td>
+      </tr>
+      <tr id="forCol5">
+        <td id="for40"><img style="width: 95%; height: 15vh;" id="forImgFourty" src="./cf/40.JPG" alt=""></td>
+        <td id="for41"><img style="width: 90%;" id="forImgFourtyOne" src="./cf/41.JPG" alt=""></td>
+        <td id="for42"><img style="width: 90%;" id="forImgFourtyTwo" src="./cf/42.JPG" alt=""></td>
+        <td id="for43"><img style="width: 90%;" id="forImgFourtyThree" src="./cf/43.JPG" alt=""></td>
+        <td id="for44"><img style="width: 90%;" id="forImgFourtyFour" src="./cf/44.JPG" alt=""></td>
+        <td id="for45"><img style="width: 90%;" id="forImgFourtyFive" src="./cf/45.JPG" alt=""></td>
+        <td id="for46"><img style="width: 90%;" id="forImgFourtySix" src="./cf/46.JPG" alt=""></td>
+        <td id="for47"><img style="width: 90%;" id="forImgFourtySeven" src="./cf/47.JPG" alt=""></td>
+        <td id="for48"><img style="width: 90%;" id="forImgFourtyEight" src="./cf/48.JPG" alt=""></td>
+        <td id="for49"><img style="width: 90%;" id="forImgFourtyNine" src="./cf/49.JPG" alt=""></td>
+      </tr>
+      <tr id="forCol4">
+        <td id="for30"><img style="width: 90%;" id="forImgThirty" src="./cf/30.JPG" alt=""></td>
+        <td id="for31"><img style="width: 90%;" id="forImgThirtyOne" src="./cf/31.JPG" alt=""></td>
+        <td id="for32"><img style="width: 90%;" id="forImgThirtyTwo" src="./cf/32.JPG" alt=""></td>
+        <td id="for33"><img style="width: 90%;" id="forImgThirtyThree" src="./cf/33.JPG" alt=""></td>
+        <td id="for34"><img style="width: 90%;" id="forImgThirtyFour" src="./cf/34.JPG" alt=""></td>
+        <td id="for35"><img style="width: 90%;" id="forImgThirtyFive" src="./cf/35.JPG" alt=""></td>
+        <td id="for36"><img style="width: 90%;" id="forImgThirtySix" src="./cf/36.JPG" alt=""></td>
+        <td id="for37"><img style="width: 90%;" id="forImgThirtySeven" src="./cf/37.JPG" alt=""></td>
+        <td id="for38"><img style="width: 90%;" id="forImgThirtyEight" src="./cf/38.JPG" alt=""></td>
+        <td id="for39"><img style="width: 90%;" id="forImgThirtyNine" src="./cf/39.JPG" alt=""></td>
+      </tr>
+      <tr id="forCol3">
+        <td id="for20"><img style="width: 90%;" id="forImgTwenty" src="./cf/20.JPG" alt=""></td>
+        <td id="for21"><img style="width: 90%;" id="forImgTwentyOne" src="./cf/21.JPG" alt=""></td>
+        <td id="for22"><img style="width: 90%;" id="forImgTwentyTwo" src="./cf/22.JPG" alt=""></td>
+        <td id="for23"><img style="width: 90%;" id="forImgTwentyThree" src="./cf/23.JPG" alt=""></td>
+        <td id="for24"><img style="width: 90%;" id="forImgTwentyFour" src="./cf/24.JPG" alt=""></td>
+        <td id="for25"><img style="width: 90%;" id="forImgTwentyFive" src="./cf/25.JPG" alt=""></td>
+        <td id="for26"><img style="width: 90%;" id="forImgTwentySix" src="./cf/26.JPG" alt=""></td>
+        <td id="for27"><img style="width: 90%;" id="forImgTwentySeven" src="./cf/27.JPG" alt=""></td>
+        <td id="for28"><img style="width: 90%;" id="forImgTwentyEight" src="./cf/28.JPG" alt=""></td>
+        <td id="for29"><img style="width: 90%;" id="forImgTwentyNine" src="./cf/29.JPG" alt=""></td>
+      </tr>
+      <tr id="forCol2">
+        <td id="for10"><img style="width: 90%;" id="forImgTen" src="./cf/10.JPG" alt=""></td>
+        <td id="for11"><img style="width: 90%;" id="forImgEleven" src="./cf/11.JPG" alt=""></td>
+        <td id="for12"><img style="width: 90%;" id="forImgTwelve" src="./cf/12.JPG" alt=""></td>
+        <td id="for13"><img style="width: 90%;" id="forImgThirteen" src="./cf/13.JPG" alt=""></td>
+        <td id="for14"><img style="width: 90%;" id="forImgFourteen" src="./cf/14.JPG" alt=""></td>
+        <td id="for15"><img style="width: 90%;" id="forImgFiften" src="./cf/15.JPG" alt=""></td>
+        <td id="for16"><img style="width: 90%;" id="forImgSixteen" src="./cf/16.JPG" alt=""></td>
+        <td id="for17"><img style="width: 90%;" id="forImgSeventeen" src="./cf/17.JPG" alt=""></td>
+        <td id="for18"><img style="width: 90%;" id="forImgEighteen" src="./cf/18.JPG" alt=""></td>
+        <td id="for19"><img style="width: 90%;" id="forImgNineteen" src="./cf/19.JPG" alt=""></td>
+      </tr>
+      <tr id="forCol1">
+        <td id="forStart"><img style="width: 90%;" id="forImgStart" src="./cf/start.JPG" alt=""></td>
+        <td id="for1"><img style="width: 90%;" id="forImgOne" src="./cf/1.JPG" alt=""></td>
+        <td id="for2"><img style="width: 90%;" id="forImgTwo" src="./cf/2.JPG" alt=""></td>
+        <td id="for3"><img style="width: 90%;" id="forImgThree" src="./cf/3.JPG" alt=""></td>
+        <td id="for4"><img style="width: 90%;" id="forImgFour" src="./cf/4.JPG" alt=""></td>
+        <td id="for5"><img style="width: 90%;" id="forImgFive" src="./cf/5.JPG" alt=""></td>
+        <td id="for6"><img style="width: 90%;" id="forImgSix" src="./cf/6.JPG" alt=""></td>
+        <td id="for7"><img style="width: 90%;" id="forImgSeven" src="./cf/7.JPG" alt=""></td>
+        <td id="for8"><img style="width: 90%;" id="forImgEight" src="./cf/8.JPG" alt=""></td>
+        <td id="for9"><img style="width: 90%;" id="forImgNine" src="./cf/9.JPG" alt=""></td>
+      </tr>
+    </table>
+  </div>
+  <div class="modalStarter  6 modal fade w-100" id="feedbackModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="mediaSta modal-dialog modal-dialog-centered modal-centered">
+      <div class="modal-content" style="background-color: rgba(179, 162, 162, 0.3);">
+        <div class="modal-body p-0">
+          <section id="sec6">
+            <div id="sec6a" class="row gap-2 px-5 d-flex align-items-center">
+              <div  id="sec6atxt" class="col-xs-7 col-lg-5">
+                <h2><strong>Let's</strong> <em id="sec3sp1">discuss</em> <strong>something special</strong></h1>
+                <p class="">what is your experience so far playing this game? We love to hear your feedback.</p>
+                <a id="email" href="mailto:fajinmijoel11@gmail.com" class="text-decoration-none fw-bold">fajinmijoel11@gmail.com</a>
+              </div>
+              <form id="myForm" action="mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=" class="col-xs-7 col-lg-6">
+                <input type="text" placeholder="Your name" class="col-11 p-2" required>
+                <input type="email" placeholder="Your email" class="col-11 p-2 mt-3">
+                <textarea rows="4" cols="50" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
+                <input type="hidden" name="subject" id="subject">
+                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3" data-bs-dismiss="modal" type="submit" value="Send message">
+              </form>
+            </div>
+          </section>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal">Continue</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+ 
+ <!-- <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="jquery.js"></script>
+  <script defer src="./js/bootstrap.js"></script>-->
+  <!-- <script defer src="myFill.js"></script>  -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+</body>
+</html>

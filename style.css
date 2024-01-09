@@ -1,0 +1,173 @@
+@media screen and (orientation: portrait) {
+  body::before {
+    content: 'Please rotate your device to landscape mode.';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    line-height: 100vh;
+  }
+}
+
+/* Style for the popup container */
+.modal-dialog {
+  top: 50% important!;
+  transform: translateY(-50%) important!;
+}
+
+/* Style for the popup text */
+.popup-text {
+  color: #333;
+  font-size: 18px;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  /* margin: auto; */
+  border: 1px solid black;
+}
+
+td {
+  /* border: 1px solid red; */
+  /* background-color: red; */
+  width: 10%; /* Each column takes 10% of the table width */
+   /* Each row takes 16.66% of the table height (100% / 6 rows) */
+  box-sizing: border-box; /* Include border in the width and height */
+}
+td img{
+  margin: auto;
+}
+
+input[type="radio"] {
+  width: 25px;
+  height: 25px;
+}
+
+/* .tbPar{
+  margin: 0px;
+  padding: 0px;
+} */
+
+/* .tbPar table td{
+  width: 150px;
+  height: 100px;
+}
+.tbPar table {
+  border: solid 5px red;
+} */
+
+.editable{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: hide;
+  position: relative;
+}
+
+.modal-centered {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .modal-centered {
+    align-items: initial;
+  }
+}
+/* .question{
+  margin: auto;
+} */
+.question label{
+  display: block;
+}
+
+.music-player {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* sec6 */
+#sec6a{
+  padding-top: 50px;
+  padding-bottom: 100px;
+  background-color: #FFF9E7;
+}
+#sec6atxt{
+  color: navy;
+}
+@media screen and (max-width:1000px) {
+  #sec6atxt h2{
+     font-size:large;
+ }
+}
+@media screen and (max-width:1000px) {
+  #sec6atxt p{
+     font-size:small;
+ }
+}
+#email{
+  font-size: small;
+  color:#756BEE;
+}
+@media screen and (max-width:1000px) {
+  #email{
+     font-size:x-small;
+ }
+}
+#sec6b{
+  color: navy;
+}
+@media screen and (max-width:1000px) {
+  #sec6b h3{
+     font-size:large;
+ }
+}
+/* #sec6b aside{
+  background-color: white;
+  padding: 10px;
+  color:#756BEE;
+  font-size: small;
+} */
+#sec6b strong{
+  color: navy;
+  font-size: large;
+} 
+@media screen and (max-width:1000px) {
+  #sec6b strong{
+     font-size: medium;
+ }
+}
+#sec6b a{
+  color:#756BEE;
+  text-decoration: none;
+}
+/* #jumUpWord{
+  display: block;
+  color: yellow;
+  position: absolute;
+  position: relative;
+  transition: transform 0.5s ease-out;
+  position: ;
+  display: block;
+  z-index: 5;
+  top: 50px;
+  left: 100px;
+  transform: translateY(-30px);
+
+} */
