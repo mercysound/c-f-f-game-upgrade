@@ -6,8 +6,8 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <title>Contending for Faith</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="js/bootstrap.js">
+  <!-- <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="js/bootstrap.js"> -->
   <script src="jquery.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -1145,7 +1145,7 @@
          <img class="mb-0" src="./cf/50.JPG" alt="" width="50%">
         </div>
         <div class="modal-footer">
-          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal">Continue</button>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(51)" data-bs-dismiss="">Continue</button>
           <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
@@ -1258,7 +1258,7 @@
             <div id="sec6a" class="row gap-2 px-5 d-flex align-items-center">
               <div  id="sec6atxt" class="col-xs-7 col-lg-5">
                 <h2><strong>Let's</strong> <em id="sec3sp1">discuss</em> <strong>something special</strong></h1>
-                <p class="">what is your experience so far playing this game? We love to hear your feedback.</p>
+                <p class="">What is your experience so far playing this game? This would led you to your mail app, pls don't ignore to continue</p>
                 <a id="email" href="mailto:fajinmijoel11@gmail.com" class="text-decoration-none fw-bold">fajinmijoel11@gmail.com</a>
               </div>
               <form id="myForm" action="mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=" class="col-xs-7 col-lg-6">
@@ -1266,7 +1266,7 @@
                 <input type="email" placeholder="Your email" class="col-11 p-2 mt-3">
                 <textarea rows="4" cols="50" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
                 <input type="hidden" name="subject" id="subject">
-                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3" data-bs-dismiss="modal" type="submit" value="Send message">
+                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3 form-control" data-bs-dismiss="modal" type="submit" value="Enter to Continue">
               </form>
             </div>
           </section>
@@ -1277,7 +1277,54 @@
       </div>
     </div>
   </div>
- 
+  <script>
+    // Add an event listener to the select element
+playerSelect.addEventListener('change', function() {
+  // Get the selected value
+  var selectedValue = playerSelect.value;
+  // Display a message based on the selected value
+  if (selectedValue === '1') {
+    // resultMessage.textContent = 'You selected One Player mode.';
+    window.location = "onePlayer.html"
+  } else if (selectedValue === '2') {
+    // resultMessage.textContent = 'You selected Two Players mode.';
+    var firstPName = prompt("First player name")
+    var secondPName = prompt("Second player name")
+
+    if(firstPName === null){
+      firstPersonPlaying = "PLAYER ONE"
+    }else if(firstPName === ""){
+      firstPersonPlaying = "PLAYER ONE"
+    }else if(firstPName !== ""){
+      if(!firstPName){
+        firstPersonPlaying = "PLAYER ONE"
+      }else{
+        firstPersonPlaying = firstPName.toUpperCase()
+      }
+    };
+
+    if(secondPName === null){
+      secondPersonPlaying = "PLAYER TWO"
+    }else if(secondPName === ""){
+      secondPersonPlaying = "PLAYER TWO"
+    }else if(secondPName !== ""){
+      if(!secondPName){
+        secondPersonPlaying = "PLAYER TWO"
+      }else{
+        secondPersonPlaying = secondPName.toUpperCase()
+      }
+    };
+    document.getElementById("playerOneName").innerText = (`"${firstPersonPlaying}"`);
+    firstPersonPlaying = (`"${firstPersonPlaying}"`);
+
+    document.getElementById("playerTwoName").innerText = (`"${secondPersonPlaying}"`);
+    secondPersonPlaying = (`"${secondPersonPlaying}"`);
+    document.getElementById("btn-disp").classList.remove('d-none')
+  } else {
+    resultMessage.textContent = 'Invalid selection.';
+  }
+});
+  </script>
  <!-- <link rel="stylesheet" href="css/bootstrap.css">
   <script src="jquery.js"></script>
   <script defer src="./js/bootstrap.js"></script>-->

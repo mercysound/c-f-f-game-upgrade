@@ -15,6 +15,20 @@ function clearRadioButtons() {
   });
 }
 
+// method for for feedback
+const textarea = document.getElementById("textarea-view");
+const subjectInput = document.getElementById("subject");
+
+textarea.addEventListener("input", () => {
+  subjectInput.value = textarea.value.trim(); // Trim leading/trailing spaces
+});
+
+document.getElementById("myForm").addEventListener("submit", (event) => {
+  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with "+"
+  event.preventDefault(); // Prevent default form submission
+  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
+});
+
 // Function to check device orientation
 function checkOrientation() {
   if (window.innerWidth > window.innerHeight) {
@@ -40,52 +54,52 @@ var secondPersonPlaying = "";
 var playerSelect = document.getElementById('playerSelect');
 var resultMessage = document.getElementById('resultMessage');
 
-// Add an event listener to the select element
-playerSelect.addEventListener('change', function() {
-  // Get the selected value
-  var selectedValue = playerSelect.value;
-  // Display a message based on the selected value
-  if (selectedValue === '1') {
-    // resultMessage.textContent = 'You selected One Player mode.';
-    window.location = "onePlayer.html"
-  } else if (selectedValue === '2') {
-    // resultMessage.textContent = 'You selected Two Players mode.';
-    var firstPName = prompt("First player name")
-    var secondPName = prompt("Second player name")
+// // Add an event listener to the select element
+// playerSelect.addEventListener('change', function() {
+//   // Get the selected value
+//   var selectedValue = playerSelect.value;
+//   // Display a message based on the selected value
+//   if (selectedValue === '1') {
+//     // resultMessage.textContent = 'You selected One Player mode.';
+//     window.location = "onePlayer.html"
+//   } else if (selectedValue === '2') {
+//     // resultMessage.textContent = 'You selected Two Players mode.';
+//     var firstPName = prompt("First player name")
+//     var secondPName = prompt("Second player name")
 
-    if(firstPName === null){
-      firstPersonPlaying = "PLAYER"
-    }else if(firstPName === ""){
-      firstPersonPlaying = "PLAYER"
-    }else if(firstPName !== ""){
-      if(!firstPName){
-        firstPersonPlaying = "PLAYER"
-      }else{
-        firstPersonPlaying = firstPName.toUpperCase()
-      }
-    };
+//     if(firstPName === null){
+//       firstPersonPlaying = "PLAYER ONE"
+//     }else if(firstPName === ""){
+//       firstPersonPlaying = "PLAYER ONE"
+//     }else if(firstPName !== ""){
+//       if(!firstPName){
+//         firstPersonPlaying = "PLAYER ONE"
+//       }else{
+//         firstPersonPlaying = firstPName.toUpperCase()
+//       }
+//     };
 
-    if(secondPName === null){
-      secondPersonPlaying = "PLAYER"
-    }else if(secondPName === ""){
-      secondPersonPlaying = "PLAYER"
-    }else if(secondPName !== ""){
-      if(!secondPName){
-        secondPersonPlaying = "PLAYER"
-      }else{
-        secondPersonPlaying = secondPName.toUpperCase()
-      }
-    };
-    document.getElementById("playerOneName").innerText = (`"${firstPersonPlaying}"`);
-    firstPersonPlaying = (`"${firstPersonPlaying}"`);
+//     if(secondPName === null){
+//       secondPersonPlaying = "PLAYER TWO"
+//     }else if(secondPName === ""){
+//       secondPersonPlaying = "PLAYER TWO"
+//     }else if(secondPName !== ""){
+//       if(!secondPName){
+//         secondPersonPlaying = "PLAYER TWO"
+//       }else{
+//         secondPersonPlaying = secondPName.toUpperCase()
+//       }
+//     };
+//     document.getElementById("playerOneName").innerText = (`"${firstPersonPlaying}"`);
+//     firstPersonPlaying = (`"${firstPersonPlaying}"`);
 
-    document.getElementById("playerTwoName").innerText = (`"${secondPersonPlaying}"`);
-    secondPersonPlaying = (`"${secondPersonPlaying}"`);
-    document.getElementById("btn-disp").classList.remove('d-none')
-  } else {
-    resultMessage.textContent = 'Invalid selection.';
-  }
-});
+//     document.getElementById("playerTwoName").innerText = (`"${secondPersonPlaying}"`);
+//     secondPersonPlaying = (`"${secondPersonPlaying}"`);
+//     document.getElementById("btn-disp").classList.remove('d-none')
+//   } else {
+//     resultMessage.textContent = 'Invalid selection.';
+//   }
+// });
 
 function startGame() {
   // Your code to start the game goes here
@@ -155,6 +169,7 @@ const retriveMySessStorFunc = () => {
 
 // here is the var used to get all modal trigger id
 var allModalComputer = {
+  feedBack: bootstrap.Modal.getOrCreateInstance("#feedbackModal"),
   myModalStart: bootstrap.Modal.getOrCreateInstance("#modalStart"),
   myModal1: bootstrap.Modal.getOrCreateInstance("#modal1"),
   myModal2: bootstrap.Modal.getOrCreateInstance("#modal2"),
@@ -209,6 +224,7 @@ var allModalComputer = {
 };
 
 var confirmAnsObj = {
+  feedBack: false,
   modalshowStart: false,
   modalshow1: false,
   modalshow2: false,
@@ -281,7 +297,7 @@ const ifSixLuck = () => {
       //   clearInterval(blinkingInterval);
       // }, 8000);
     } else {
-      setTimeout(() => {
+      // setTimeout(() => {
         myTurn = false;
         computerTurn = true;
         playerSigner()
@@ -296,7 +312,7 @@ const ifSixLuck = () => {
             // setTimeout(()=>{
             //   rolDicePlayerOne()
             // }, 300)
-      }, 300);
+      // }, 300);
     }
   } else if (computerTurn == true) {
     if (getBackComputerStoVar == 6) {
@@ -310,7 +326,7 @@ const ifSixLuck = () => {
       //   clearInterval(blinkingInterval);
       // }, 8000);
     } else {
-      setTimeout(() => {
+      // setTimeout(() => {
         computerTurn = false;
         myTurn = true;
         playerSigner()
@@ -321,7 +337,7 @@ const ifSixLuck = () => {
             firstPersonPlaying +
             " Turn"
         );  
-      }, 300);
+      // }, 300);
     }
   }
   // backgroundToBlink.style.backgroundColor = colors[currentColorIndex]
@@ -372,10 +388,11 @@ const trigClose = () => {
 // here is the table blinking background
 const colors = ["0.5", "0.5", "0.5", "0.5"];
 var diceSound = new Audio("./cf/dice_ass/Rolling-Dice-Sound-effect1.mp3");
-var bonus = new Audio("./cf/dice_ass/bonus_s.wav");
-var winnerClap = new Audio("./cf/dice_ass/bonus_sound.wav");
-var lose = new Audio("./cf/dice_ass/loser_sound.wav");
-var firstToWinClap = new Audio("./cf/dice_ass/winning clapp.wav");
+var bonus = new Audio("./cf/dice_ass/bonus_s.mp3");
+var winnerClap = new Audio("./cf/dice_ass/bonus_sound.mp3");
+var lose = new Audio("./cf/dice_ass/loser_sound.mp3");
+var firstToWinClap = new Audio("./cf/dice_ass/winning clapp.mp3");
+
 const beforeBlinkBackground = () => {
     if (getBackMyStoVar == 6) {
       let recentImgStart = document.getElementById("forImgStart");
@@ -1912,6 +1929,14 @@ var tableObjec = {
   for50: document.getElementById("for50"),
 };
 
+// func that popup feedback modal
+setTimeout(() => {
+  allModalComputer.feedBack.show();
+      // trigClose();
+      confirmAnsObj.feedBack = true;
+      $(".d-none1").toggle();
+}, 150000);
+
 // This below function is use to check if the option selected is correct
 const modalTrigFun = () => {
   if (computerTurn === true && myTurn === false) {
@@ -2437,6 +2462,7 @@ const modalTrigFun = () => {
   }
   // $(".modalStarter").style.backgroundColor = `rgba(0, 0, 0, 0.5)`;
   // confirmAnsObj.modalshow50 = true;
+  diceActive = true
 };
 
 // var computerTurnToSaveSessi = 18;
@@ -2765,7 +2791,7 @@ const getSelectedOption = (coming) => {
           myTurn = true;
           $("#modal15").modal("hide");
           confirmAnsObj.modalshow15 = false;
-          alert("You got it! It's " + firstPersonPlaying + " turn to play one more time");
+          alert("You got it! It's " + firstPersonPlaying + " turn");
           winnerClap.play();
         } else if (myTurn == true) {
           myTurnToSaveSessi += 25;
@@ -2775,7 +2801,7 @@ const getSelectedOption = (coming) => {
           computerTurn = true;
           $("#modal15").modal("hide");
           confirmAnsObj.modalshow15 = false;
-          alert("You got it! It's " + secondPersonPlaying + " turn to play one more time");
+          alert("You got it! It's " + secondPersonPlaying + " turn");
           winnerClap.play();
         }
       } else if (selectedOption.value === "other") {
@@ -2785,7 +2811,7 @@ const getSelectedOption = (coming) => {
           myTurn = true;
           $("#modal15").modal("hide");
           confirmAnsObj.modalshow15 = false;
-          alert("You miss it! It's " + firstPersonPlaying + " turn to play");
+          alert("You miss it! It's " + firstPersonPlaying + " turn");
         } else if (myTurn == true) {
           lose.play()
           computerTurn = true;
@@ -3798,7 +3824,63 @@ const getSelectedOption = (coming) => {
     } else {
       alert("No option selected. Please choose an option.");
     }
-  }
+  }else if (coming === 51) {
+    if (myTurn == true) {
+        //computerTurn = true;
+        $("#modal50").modal("hide");
+        myTurn = false;
+        computerTurn = true;
+        firstToWinClap.play();
+        alert(firstPersonPlaying + " Won");
+        confirmAnsObj.modalshow50 = false;
+        restart = confirm("Do you want to restart or continue? Press 'OK' to continue and 'CANCEL' to restart");
+        if(restart){
+          myTurnToSaveSessi = 0;
+          computerTurnToSaveSessi = 0;
+          setMySessStorFunc()
+          retriveMySessStorFunc()
+          setComputerSessStorFunc()
+          retriveComputerSessStorFunc()
+          blinkBackground()
+          var pScoreTwo = document.getElementById("pTwoScore");
+          var currentPTwoScoreValue = parseInt(pScoreTwo.innerText, 10);
+          if(pTwoScore.innerText == 0 || pTwoScore.innerText > 0){
+            pScoreTwo.innerText = currentPTwoScoreValue + 1
+          }
+          document.getElementById("gameContent").classList.add('d-none') 
+          document.getElementById("gameContent").classList.remove('d-none')
+      }else {
+          window.location.reload();
+        }
+    }else if(computerTurn == true){
+      //computerTurn = true;
+      $("#modal50").modal("hide");
+      computerTurn = false;
+      myTurn = true;
+      firstToWinClap.play();
+      alert(secondPersonPlaying + " Won");
+      confirmAnsObj.modalshow50 = false;
+      restart = confirm("Do you want to restart or continue? Press 'OK' to continue and 'CANCEL' to restart");
+      if(restart){
+        myTurnToSaveSessi = 0;
+        computerTurnToSaveSessi = 0;
+        setMySessStorFunc()
+        retriveMySessStorFunc()
+        setComputerSessStorFunc()
+        retriveComputerSessStorFunc()
+        blinkBackground()
+        var pScoreOne = document.getElementById("pOneScore");
+          var currentPOneScoreValue = parseInt(pScoreOne.innerText, 10);
+          if(pOneScore.innerText == 0 || pOneScore.innerText > 0){
+            pScoreOne.innerText = currentPOneScoreValue + 1
+          }
+        document.getElementById("gameContent").classList.add('d-none') 
+        document.getElementById("gameContent").classList.remove('d-none')
+    }else {
+        window.location.reload();
+      }
+    }
+  }  
   playerSigner()
   blinkBackground()
 };
@@ -3810,11 +3892,14 @@ const forEntr = (e) => {
 };
 
 var correctAnswer;
+var diceActive = true
 
 const rolDicePlayerOne = () => {
+  document.getElementById("dispDiceRolOne").removeEventListener("click", rolDicePlayerOne)
   beforeBlinkBackground()
   clearRadioButtons()
-  if (myTurn === true && computerTurn === false) {
+  if (myTurn === true && computerTurn === false && diceActive === true) {
+    diceActive = false
     $(".modalStarter").on("hidden.bs.modal", function (e) {
       // Handle the event after the modal is shown
       dispDiceHole.focus();
@@ -3837,94 +3922,38 @@ const rolDicePlayerOne = () => {
     // diceRandNoPlayerOne = 6;
     // computerTurnToSaveSessi = 11;
     // getBackMyStoVar = diceRandNoPlayerOne;
-    if (myTurnToSaveSessi + diceRandNoPlayerOne >= 56) {
-      myTurnToSaveSessi = 56;
-      blinkBackground()
-      firstToWinClap.play()
-      dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice_ass/dice-rest-state.JPG'>`;
-      alert("" + firstPersonPlaying + " won");
-      restart = confirm("Do you want to restart or continue? Press 'YES' to continue and 'NO' to restart");
-      if (restart == true) {
-        // sessionStorage.clear();
-        // setComputerSessStorFunc()
-        // window.location.reload();
-        myTurnToSaveSessi = 0;
-        computerTurnToSaveSessi = 0;
-        beforeBlinkBackground()
-        var pScoreTwo = document.getElementById("pTwoScore");
-        var currentPTwoScoreValue = parseInt(pScoreTwo.innerText, 10);
-        if(pTwoScore.innerText == 0 || pTwoScore.innerText > 0){
-          pScoreTwo.innerText = currentPTwoScoreValue + 1
-        }
-        for(var i = 0; i < sessionStorage.length; i++){
-          var key = sessionStorage.key(i)
-          sessionStorage.removeItem(key)
-        }
-        document.getElementById("gameContent").classList.add('d-none') 
-        document.getElementById("gameContent").classList.remove('d-none')
-    ////dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice-rest-state.JPG'>`;
-      }else{
-        window.location.reload();
-      }
-    } else if (
-      (myTurnToSaveSessi == 50 && diceRandNoPlayerOne == 6) ||
-      (myTurnToSaveSessi >= 51 && diceRandNoPlayerOne == 5) ||
-      (myTurnToSaveSessi >= 52 && diceRandNoPlayerOne == 4) ||
-      (myTurnToSaveSessi >= 53 && diceRandNoPlayerOne == 3) ||
-      (myTurnToSaveSessi >= 54 && diceRandNoPlayerOne == 2) ||
-      (myTurnToSaveSessi >= 55 && diceRandNoPlayerOne == 1)
-    ) {
-      myTurnToSaveSessi += diceRandNoPlayerOne;
-      myTurnToSaveSessi = 56;
-      blinkBackground()
-      firstToWinClap.play();
-      dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice_ass/dice-rest-state.JPG'>`;
-      alert(firstPersonPlaying + "won" );
-      restart = confirm("Do you want to restart or continue? Press 'YES' to continue and 'NO' to restart");
-      if(restart){
-        // sessionStorage.clear();
-        // setComputerSessStorFunc()
-        // window.location.reload();
-        myTurnToSaveSessi = 0;
-        computerTurnToSaveSessi = 0;
-        beforeBlinkBackground()
-        var pScoreTwo = document.getElementById("pTwoScore");
-        var currentPTwoScoreValue = parseInt(pScoreTwo.innerText, 10);
-        if(pTwoScore.innerText == 0 || pTwoScore.innerText > 0){
-          pScoreTwo.innerText = currentPTwoScoreValue + 1
-        }
-        for(var i = 0; i < sessionStorage.length; i++){
-          var key = sessionStorage.key(i);
-          sessionStorage.removeItem(key)
-        }
-        document.getElementById("gameContent").classList.add('d-none') 
-        document.getElementById("gameContent").classList.remove('d-none')
-    //dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice-rest-state.JPG'>`;
-      } else {
-        window.location.reload();
-      }
-    } else if (diceRandNoPlayerOne == 6 && myTurnToSaveSessi == 0) {
-      myTurnToSaveSessi = diceRandNoPlayerOne;
-    } else if (myTurnToSaveSessi >= 6) {
-      myTurnToSaveSessi += diceRandNoPlayerOne;
-    }
+    if (((myTurnToSaveSessi == 50) && (diceRandNoPlayerOne == 6)) ||
+    ((myTurnToSaveSessi == 51) && (diceRandNoPlayerOne == 5 || 6)) ||
+    ((myTurnToSaveSessi == 52) && (diceRandNoPlayerOne == 4 || 5 || 6)) ||
+    ((myTurnToSaveSessi == 53) && (diceRandNoPlayerOne == 3 || 4 || 5 || 6)) ||
+    ((myTurnToSaveSessi == 54) && (diceRandNoPlayerOne == 2 || 3 || 4 || 5 || 6)) ||
+    ((myTurnToSaveSessi == 55) && (diceRandNoPlayerOne == 1 || 2 || 3 || 4 || 5 || 6))
+  ) {
+    myTurnToSaveSessi = 56;
+  //dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice-rest-state.JPG'>`;
+  } else if (diceRandNoPlayerOne == 6 && myTurnToSaveSessi == 0) {
+    myTurnToSaveSessi = diceRandNoPlayerOne;
+  } else if (myTurnToSaveSessi >= 6) {
+    myTurnToSaveSessi += diceRandNoPlayerOne;
+  }
     setMySessStorFunc();
     retriveMySessStorFunc();
     setComputerSessStorFunc();
     retriveComputerSessStorFunc();
     // getBackComputerStoVar = globeChangNum;
     // console.log(getBackComputerStoVar);
-    if(restart){
-      restart = false;
-    }else{
+    // if(restart){
+      // restart = false;
+    // }else{
       setTimeout(function () {
         // ifSixLuck()
         dispLuck();
         modalTrigFun();
         diceSound.pause();
       }, 800);
-    }
-  } else if (computerTurn === true && myTurn === false) {
+    // }
+  }else if (computerTurn === true && myTurn === false && diceActive === true) {
+    diceActive = false
     $(".modalStarter").on("hidden.bs.modal", function (e) {
       // Handle the event after the modal is shown
       dispDiceHole.focus();
@@ -3948,71 +3977,15 @@ const rolDicePlayerOne = () => {
     // computerTurnToSaveSessi = 11;
     // getBackComputerStoVar = 35
     // getBackComputerStoVar = diceRandNoPlayerOne;
-    if (computerTurnToSaveSessi + diceRandNoPlayerOne >= 56) {
-      computerTurnToSaveSessi = 56;
-      blinkBackground()
-      firstToWinClap.play()
-      dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice_ass/dice-rest-state.JPG'>`;
-      alert("" + secondPersonPlaying + " won");
-      restart = confirm("Do you want to restart or continue? Press 'YES' to continue and 'NO' to restart");
-      if (restart == true) {
-        // sessionStorage.clear();
-        // setComputerSessStorFunc()
-        // window.location.reload();
-        myTurnToSaveSessi = 0;
-        computerTurnToSaveSessi = 0
-        beforeBlinkBackground();
-        var pScoreOne = document.getElementById("pOneScore");
-        var currentPOneScoreValue = parseInt(pScoreOne.innerText, 10);
-        if(pOneScore.innerText == 0 || pOneScore.innerText > 0){
-          pScoreOne.innerText = currentPOneScoreValue + 1
-        }
-        for(var i = 0; i < sessionStorage.length; i++){
-          var key = sessionStorage.key(i);
-          sessionStorage.removeItem(key)
-        }
-        document.getElementById("gameContent").classList.add('d-none') 
-        document.getElementById("gameContent").classList.remove('d-none')
-      }else{
-        window.location.reload();
-      }
-    } else if (
-      (computerTurnToSaveSessi == 50 && diceRandNoPlayerOne == 6) ||
-      (computerTurnToSaveSessi >= 51 && diceRandNoPlayerOne == 5) ||
-      (computerTurnToSaveSessi >= 52 && diceRandNoPlayerOne == 4) ||
-      (computerTurnToSaveSessi >= 53 && diceRandNoPlayerOne == 3) ||
-      (computerTurnToSaveSessi >= 54 && diceRandNoPlayerOne == 2) ||
-      (computerTurnToSaveSessi >= 55 && diceRandNoPlayerOne == 1)
+    if (((computerTurnToSaveSessi == 50) && (diceRandNoPlayerOne == 6)) ||
+      ((computerTurnToSaveSessi == 51) && (diceRandNoPlayerOne == 5 || 6)) ||
+      ((computerTurnToSaveSessi == 52) && (diceRandNoPlayerOne == 4 || 5 || 6)) ||
+      ((computerTurnToSaveSessi == 53) && (diceRandNoPlayerOne == 3 || 4 || 5 || 6)) ||
+      ((computerTurnToSaveSessi == 54) && (diceRandNoPlayerOne == 2 || 3 || 4 || 5 || 6)) ||
+      ((computerTurnToSaveSessi == 55) && (diceRandNoPlayerOne == 1 || 2 || 3 || 4 || 5 || 6))
     ) {
-      computerTurnToSaveSessi += diceRandNoPlayerOne;
       computerTurnToSaveSessi = 56;
-      blinkBackground()
-      firstToWinClap.play()
-      dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice_ass/dice-rest-state.JPG'>`;
-      alert("" + secondPersonPlaying + " won");
-      restart = confirm("Do you want to restart or continue? Press 'YES' to continue and 'NO' to restart");
-      if (restart == true) {
-        // sessionStorage.clear();
-        
-        // setComputerSessStorFunc()
-        myTurnToSaveSessi = 0;
-        computerTurnToSaveSessi = 0
-        beforeBlinkBackground()
-        var pScoreOne = document.getElementById("pOneScore");
-        var currentPOneScoreValue = parseInt(pScoreOne.innerText, 10);
-        if(pOneScore.innerText == 0 || pOneScore.innerText > 0){
-          pScoreOne.innerText = currentPOneScoreValue + 1
-        }
-        for(var i = 0; i < sessionStorage.length; i++){
-          var key = sessionStorage.key(i);
-          sessionStorage.removeItem(key)
-        }
-        document.getElementById("gameContent").classList.add('d-none') 
-        document.getElementById("gameContent").classList.remove('d-none')
-        // window.location.reload();
-      }else{
-        window.location.reload();
-      }
+    //dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice-rest-state.JPG'>`;
     } else if (diceRandNoPlayerOne == 6 && computerTurnToSaveSessi == 0) {
       computerTurnToSaveSessi = diceRandNoPlayerOne;
     } else if (computerTurnToSaveSessi >= 6) {
@@ -4024,63 +3997,17 @@ const rolDicePlayerOne = () => {
     retriveMySessStorFunc();
     // getBackComputerStoVar = globeChangNum;
     // console.log(getBackComputerStoVar);
-    if(restart){
-      restart = false
-    }else{
+    // if(restart){
+      // restart = false
+    // }else{
       setTimeout(function () {
         // ifSixLuck()
         dispLuck();
         modalTrigFun();
         diceSound.pause();
       }, 800);
-    }
+    // }
   }
-};
+  console.log(diceActive)
+}
 
-// method for for feedback
-const textarea = document.getElementById("textarea-view");
-const subjectInput = document.getElementById("subject");
-
-textarea.addEventListener("input", () => {
-  subjectInput.value = textarea.value.trim(); // Trim leading/trailing spaces
-});
-
-document.getElementById("myForm").addEventListener("submit", (event) => {
-  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with "+"
-  event.preventDefault(); // Prevent default form submission
-  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
-});
-
-
-// here is music function 
-// const audioPlayer = document.getElementById('audioPlayer');
-// const playBtn = document.getElementById('playBtn');
-// const pauseBtn = document.getElementById('pauseBtn');
-// const stopBtn = document.getElementById('stopBtn');
-// const nextBtn = document.getElementById('nextBtn');
-// const prevBtn = document.getElementById('prevBtn');
-
-// // Play button click event
-// playBtn.addEventListener('click', () => {
-//   audioPlayer.play();
-// });
-
-// // Pause button click event
-// pauseBtn.addEventListener('click', () => {
-//   audioPlayer.pause();
-// });
-// stopBtn.addEventListener('click', () => {
-//   audioPlayer.stop();
-// });
-
-// // Next button click event (change the source to the next song)
-// nextBtn.addEventListener('click', () => {
-//   // You can update the source to the next song in your playlist
-//   audioPlayer.src = './cf/dice_ass/winning clapp.wav'; // Change this to the next song
-//   audioPlayer.play();
-// });
-// prevBtn.addEventListener('click', () => {
-//   // You can update the source to the next song in your playlist
-//   audioPlayer.src = './cf/dice_ass/winning clapp.wav'; // Change this to the next song
-//   audioPlayer.play();
-// });

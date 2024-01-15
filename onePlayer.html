@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contending for Faith</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="js/bootstrap.js">
+  <!-- <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="js/bootstrap.js"> -->
   <script src="jquery.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -215,8 +215,8 @@
          </div>
          </div>
         </div>
-        <!-- <!-- <div class="modal-footer">
-        </div> --> -->
+        <!-- <div class="modal-footer">
+        </div> -->
       </div>
     </div>
   </div>
@@ -980,8 +980,8 @@
          </div>
          </div>
         </div>
-        <!-- <!-- <div class="modal-footer">
-        </div> --> -->
+        <!-- <div class="modal-footer">
+        </div> -->
       </div>
     </div>
   </div>
@@ -1008,8 +1008,8 @@
          </div>
          </div>
         </div>
-        <!-- <!-- <div class="modal-footer">
-        </div> --> -->
+        <!-- <div class="modal-footer">
+        </div> -->
       </div>
     </div>
   </div>
@@ -1024,7 +1024,7 @@
          <img class="mb-0" src="./cf/50.JPG" alt="" width="50%">
         </div>
         <div class="modal-footer">
-          <button type="button" id="btn-continue" class="btn btn-outline-warning contine-focus" data-bs-dismiss="modal">Continue</button>
+          <button type="button" id="btn-continue" class="byClassName btn btn-outline-warning contine-focus mt-2" onclick="getSelectedOption(51)" data-bs-dismiss="">Continue</button>
           <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
@@ -1138,7 +1138,7 @@
             <div id="sec6a" class="row gap-2 px-5 d-flex align-items-center">
               <div  id="sec6atxt" class="col-xs-7 col-lg-5">
                 <h2><strong>Let's</strong> <em id="sec3sp1">discuss</em> <strong>something special</strong></h1>
-                <p class="">what is your experience so far playing this game? We love to hear your feedback.</p>
+                <p class="">What is your experience so far playing this game? This would led you to your mail app, pls don't ignore to continue</p>
                 <a id="email" href="mailto:fajinmijoel11@gmail.com" class="text-decoration-none fw-bold">fajinmijoel11@gmail.com</a>
               </div>
               <form id="myForm" action="mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=" class="col-xs-7 col-lg-6">
@@ -1146,7 +1146,7 @@
                 <input type="email" placeholder="Your email" class="col-11 p-2 mt-3">
                 <textarea rows="4" cols="50" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
                 <input type="hidden" name="subject" id="subject">
-                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3" data-bs-dismiss="modal" type="submit" value="Send message">
+                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3 form-control" data-bs-dismiss="modal" type="submit" value="Enter to Continue">
               </form>
             </div>
           </section>
@@ -1240,7 +1240,7 @@ var getBackMyStoVar; ////////
 //here is the var setting the new number
 // here is the var of the number saving to session stor
 var computerTurnToSaveSessi = 0;
-var myTurnToSaveSessi = 0;
+var myTurnToSaveSessi = 0; /////
 
 // player turn to play turn
 var myTurn = true;
@@ -1391,6 +1391,7 @@ var confirmAnsObj = {
 };
 
 const ifSixLuck = () => {
+  // console.log(getBackMyStoVar);
   if (myTurn == true) {
     if (getBackMyStoVar == 6) {
       blinkBackground() // const blinkingInterval = setInterval(blinkBackground, 800);
@@ -1403,7 +1404,7 @@ const ifSixLuck = () => {
       //   clearInterval(blinkingInterval);
       // }, 8000);
     }else {
-      setTimeout(() => {
+      // setTimeout(() => {
         // computerTurn = true;
         playerSigner()
         alert(
@@ -1411,14 +1412,15 @@ const ifSixLuck = () => {
             firstPersonPlaying +
             " Need 6 to start the game!"
         );
-          myTurn = true;
         // this timeout func ment for computer turn auto play
             // setTimeout(()=>{
             //   rolDicePlayerOne()
             // }, 300)
-      }, 300);
-      diceActive = true
+      // }, 300);
+      // diceActive = true
     }
+    myTurn = true;
+
   } 
   // else if (computerTurn == true) {
   //   if (getBackComputerStoVar == 6) {
@@ -1494,10 +1496,10 @@ const trigClose = () => {
 // here is the table blinking background
 const colors = ["0.5", "0.5", "0.5", "0.5"];
 var diceSound = new Audio("./cf/dice_ass/Rolling-Dice-Sound-effect1.mp3");
-var bonus = new Audio("./cf/dice_ass/bonus_s.wav");
-var winnerClap = new Audio("./cf/dice_ass/bonus_sound.wav");
-var lose = new Audio("./cf/dice_ass/loser_sound.wav");
-var firstToWinClap = new Audio("./cf/dice_ass/winning clapp.wav");
+var bonus = new Audio("./cf/dice_ass/bonus_s.mp3");
+var winnerClap = new Audio("./cf/dice_ass/bonus_sound.mp3");
+var lose = new Audio("./cf/dice_ass/loser_sound.mp3");
+var firstToWinClap = new Audio("./cf/dice_ass/winning clapp.mp3");
 const beforeBlinkBackground = () => {
     if (getBackMyStoVar == 6) {
       let recentImgStart = document.getElementById("forImgStart");
@@ -1508,7 +1510,7 @@ const beforeBlinkBackground = () => {
       tableObjec.forStart.style.backgroundRepeat = `no-repeat`;
       tableObjec.forStart.style.justifyContent = `center`;
       // tableObjec.for1.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackMyStoVar == 7) {
+    }else if (getBackMyStoVar == 7) {
       let recentImg1 = document.getElementById("forImgOne");
       recentImg1.style.display = "none";
       tableObjec.for1.style.background = `
@@ -1914,421 +1916,6 @@ const beforeBlinkBackground = () => {
       tableObjec.forStart.style.justifyContent = `center`; 
     }
     // document.getElementsByTagName("td").style.backgroundColor = `red`
- 
-    if (getBackComputerStoVar == 6) {
-      let recentImgStart = document.getElementById("forImgStart");
-      recentImgStart.style.display = "none";
-      tableObjec.forStart.style.background = `
-    url("cf/start.JPG")`;
-      tableObjec.forStart.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-      tableObjec.forStart.style.backgroundRepeat = `no-repeat`;
-      // tableObjec.for1.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackComputerStoVar == 7) {
-      let recentImg1 = document.getElementById("forImgOne");
-      recentImg1.style.display = "none";
-      tableObjec.for1.style.background = `
-    url("cf/1.JPG")`;
-      tableObjec.for1.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for1.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-      // for2.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackComputerStoVar == 8) {
-      let recentImg2 = document.getElementById("forImgTwo");
-      recentImg2.style.display = "none";
-      tableObjec.for2.style.background = `
-    url("cf/2.JPG")`;
-      tableObjec.for2.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for2.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-      // for2.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackComputerStoVar == 9) {
-      let recentImg3 = document.getElementById("forImgThree");
-      recentImg3.style.display = "none";
-      tableObjec.for3.style.background = `
-    url("cf/3.JPG")`;
-      tableObjec.for3.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for3.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-      // for2.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackComputerStoVar == 10) {
-      let recentImg4 = document.getElementById("forImgFour");
-      recentImg4.style.display = "none";
-      tableObjec.for4.style.background = `
-    url("cf/4.JPG")`;
-      tableObjec.for4.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for4.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-      // for2.style.backgroundColor = colors[currentColorIndex]
-    } else if (getBackComputerStoVar == 11) {
-      let recentImg5 = document.getElementById("forImgFive");
-      recentImg5.style.display = "none";
-      tableObjec.for5.style.background = `
-    url("cf/5.JPG")`;
-      tableObjec.for5.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for5.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 12) {
-      let recentImg6 = document.getElementById("forImgSix");
-      recentImg6.style.display = "none";
-      tableObjec.for6.style.background = `
-    url("cf/6.JPG")`;
-      tableObjec.for6.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for6.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 13) {
-      let recentImg7 = document.getElementById("forImgSeven");
-      recentImg7.style.display = "none";
-      tableObjec.for7.style.background = `
-    url("cf/7.JPG")`;
-      tableObjec.for7.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for7.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 14) {
-      let recentImg8 = document.getElementById("forImgEight");
-      recentImg8.style.display = "none";
-      tableObjec.for8.style.background = `
-    url("cf/8.JPG")`;
-      tableObjec.for8.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for8.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 15) {
-      let recentImg9 = document.getElementById("forImgNine");
-      recentImg9.style.display = "none";
-      tableObjec.for9.style.background = `
-    url("cf/9.JPG")`;
-      tableObjec.for9.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for9.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 16) {
-      let recentImg10 = document.getElementById("forImgTen");
-      recentImg10.style.display = "none";
-      tableObjec.for10.style.background = `
-    url("cf/10.JPG")`;
-      tableObjec.for10.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for10.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 17) {
-      let recentImg11 = document.getElementById("forImgEleven");
-      recentImg11.style.display = "none";
-      tableObjec.for11.style.background = `
-    url("cf/11.JPG")`;
-      tableObjec.for11.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for11.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 18) {
-      let recentImg12 = document.getElementById("forImgTwelve");
-      recentImg12.style.display = "none";
-      tableObjec.for12.style.background = `
-    url("cf/12.JPG")`;
-      tableObjec.for12.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for12.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 19) {
-      let recentImg13 = document.getElementById("forImgThirteen");
-      recentImg13.style.display = "none";
-      tableObjec.for13.style.background = `
-    url("cf/13.JPG")`;
-      tableObjec.for13.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for13.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 20) {
-      let recentImg14 = document.getElementById("forImgFourteen");
-      recentImg14.style.display = "none";
-      tableObjec.for14.style.background = `
-    url("cf/14.JPG")`;
-      tableObjec.for14.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for14.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 21) {
-      let recentImg15 = document.getElementById("forImgFiften");
-      recentImg15.style.display = "none";
-      tableObjec.for15.style.background = `
-    url("cf/15.JPG")`;
-      tableObjec.for15.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for15.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 22) {
-      let recentImg16 = document.getElementById("forImgSixteen");
-      recentImg16.style.display = "none";
-      tableObjec.for16.style.background = `
-    url("cf/16.JPG")`;
-      tableObjec.for16.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for16.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 23) {
-      let recentImg17 = document.getElementById("forImgSeventeen");
-      recentImg17.style.display = "none";
-      tableObjec.for17.style.background = `
-    url("cf/17.JPG")`;
-      tableObjec.for17.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for17.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 24) {
-      let recentImg18 = document.getElementById("forImgEighteen");
-      recentImg18.style.display = "none";
-      tableObjec.for18.style.background = `
-    url("cf/18.JPG")`;
-      tableObjec.for18.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for18.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 25) {
-      let recentImg19 = document.getElementById("forImgNineteen");
-      recentImg19.style.display = "none";
-      tableObjec.for19.style.background = `
-    url("cf/19.JPG")`;
-      tableObjec.for19.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for19.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 26) {
-      let recentImg20 = document.getElementById("forImgTwenty");
-      recentImg20.style.display = "none";
-      tableObjec.for20.style.background = `
-    url("cf/20.JPG")`;
-      tableObjec.for20.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for20.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 27) {
-      let recentImg21 = document.getElementById("forImgTwentyOne");
-      recentImg21.style.display = "none";
-      tableObjec.for21.style.background = `
-    url("cf/21.JPG")`;
-      tableObjec.for21.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for21.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 28) {
-      let recentImg22 = document.getElementById("forImgTwentyTwo");
-      recentImg22.style.display = "none";
-      tableObjec.for22.style.background = `
-    url("cf/22.JPG")`;
-      tableObjec.for22.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for22.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 29) {
-      let recentImg23 = document.getElementById("forImgTwentyThree");
-      recentImg23.style.display = "none";
-      tableObjec.for23.style.background = `
-    url("cf/23.JPG")`;
-      tableObjec.for23.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for23.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 30) {
-      let recentImg24 = document.getElementById("forImgTwentyFour");
-      recentImg24.style.display = "none";
-      tableObjec.for24.style.background = `
-    url("cf/24.JPG")`;
-      tableObjec.for24.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for24.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 31) {
-      let recentImg25 = document.getElementById("forImgTwentyFive");
-      recentImg25.style.display = "none";
-      tableObjec.for25.style.background = `
-    url("cf/25.JPG")`;
-      tableObjec.for25.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for25.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 32) {
-      let recentImg26 = document.getElementById("forImgTwentySix");
-      recentImg26.style.display = "none";
-      tableObjec.for26.style.background = `
-    url("cf/26.JPG")`;
-      tableObjec.for26.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for26.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 33) {
-      let recentImg27 = document.getElementById("forImgTwentySeven");
-      recentImg27.style.display = "none";
-      tableObjec.for27.style.background = `
-    url("cf/27.JPG")`;
-      tableObjec.for27.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for27.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 34) {
-      let recentImg28 = document.getElementById("forImgTwentyEight");
-      recentImg28.style.display = "none";
-      tableObjec.for28.style.background = `
-    url("cf/28.JPG")`;
-      tableObjec.for28.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for28.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 35) {
-      let recentImg29 = document.getElementById("forImgTwentyNine");
-      recentImg29.style.display = "none";
-      tableObjec.for29.style.background = `
-    url("cf/29.JPG")`;
-      tableObjec.for29.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for29.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 36) {
-      let recentImg30 = document.getElementById("forImgThirty");
-      recentImg30.style.display = "none";
-      tableObjec.for30.style.background = `
-    url("cf/30.JPG")`;
-      tableObjec.for30.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for30.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 37) {
-      let recentImg31 = document.getElementById("forImgThirtyOne");
-      recentImg31.style.display = "none";
-      tableObjec.for31.style.background = `
-    url("cf/31.JPG")`;
-      tableObjec.for31.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for31.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 38) {
-      let recentImg32 = document.getElementById("forImgThirtyTwo");
-      recentImg32.style.display = "none";
-      tableObjec.for32.style.background = `
-    url("cf/32.JPG")`;
-      tableObjec.for32.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for32.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 39) {
-      let recentImg33 = document.getElementById("forImgThirtyThree");
-      recentImg33.style.display = "none";
-      tableObjec.for33.style.background = `
-    url("cf/33.JPG")`;
-      tableObjec.for33.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for33.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 40) {
-      let recentImg34 = document.getElementById("forImgThirtyFour");
-      recentImg34.style.display = "none";
-      tableObjec.for34.style.background = `
-    url("cf/34.JPG")`;
-      tableObjec.for34.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for34.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 41) {
-      let recentImg35 = document.getElementById("forImgThirtyFive");
-      recentImg35.style.display = "none";
-      tableObjec.for35.style.background = `
-    url("cf/35.JPG")`;
-      tableObjec.for35.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for35.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 42) {
-      let recentImg36 = document.getElementById("forImgThirtySix");
-      recentImg36.style.display = "none";
-      tableObjec.for36.style.background = `
-    url("cf/36.JPG")`;
-      tableObjec.for36.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for36.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 43) {
-      let recentImg37 = document.getElementById("forImgThirtySeven");
-      recentImg37.style.display = "none";
-      tableObjec.for37.style.background = `
-    url("cf/37.JPG")`;
-      tableObjec.for37.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for37.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 44) {
-      let recentImg38 = document.getElementById("forImgThirtyEight");
-      recentImg38.style.display = "none";
-      tableObjec.for38.style.background = `
-    url("cf/38.JPG")`;
-      tableObjec.for38.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for38.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 45) {
-      let recentImg39 = document.getElementById("forImgThirtyNine");
-      recentImg39.style.display = "none";
-      tableObjec.for39.style.background = `
-    url("cf/39.JPG")`;
-      tableObjec.for39.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for39.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 46) {
-      let recentImg40 = document.getElementById("forImgFourty");
-      recentImg40.style.display = "none";
-      tableObjec.for40.style.background = `
-    url("cf/40.JPG")`;
-      tableObjec.for40.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for40.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 47) {
-      let recentImg41 = document.getElementById("forImgFourtyOne");
-      recentImg41.style.display = "none";
-      tableObjec.for41.style.background = `
-    url("cf/41.JPG")`;
-      tableObjec.for41.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for41.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 48) {
-      let recentImg42 = document.getElementById("forImgFourtyTwo");
-      recentImg42.style.display = "none";
-      tableObjec.for42.style.background = `
-    url("cf/42.JPG")`;
-      tableObjec.for42.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for42.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 49) {
-      let recentImg43 = document.getElementById("forImgFourtyThree");
-      recentImg43.style.display = "none";
-      tableObjec.for43.style.background = `
-    url("cf/43.JPG")`;
-      tableObjec.for43.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for43.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 50) {
-      let recentImg44 = document.getElementById("forImgFourtyFour");
-      recentImg44.style.display = "none";
-      tableObjec.for44.style.background = `
-    url("cf/44.JPG")`;
-      tableObjec.for44.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for44.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 51) {
-      let recentImg45 = document.getElementById("forImgFourtyFive");
-      recentImg45.style.display = "none";
-      tableObjec.for45.style.background = `
-    url("cf/45.JPG")`;
-      tableObjec.for45.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for45.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 52) {
-      let recentImg46 = document.getElementById("forImgFourtySix");
-      recentImg46.style.display = "none";
-      tableObjec.for46.style.background = `
-    url("cf/46.JPG")`;
-      tableObjec.for46.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for46.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 53) {
-      let recentImg47 = document.getElementById("forImgFourtySeven");
-      recentImg47.style.display = "none";
-      tableObjec.for47.style.background = `
-    url("cf/47.JPG")`;
-      tableObjec.for47.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for47.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 54) {
-      let recentImg48 = document.getElementById("forImgFourtyEight");
-      recentImg48.style.display = "none";
-      tableObjec.for48.style.background = `
-    url("cf/48.JPG")`;
-      tableObjec.for48.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for48.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 55) {
-      let recentImg49 = document.getElementById("forImgFourtyNine");
-      recentImg49.style.display = "none";
-      tableObjec.for49.style.background = `
-    url("cf/49.JPG")`;
-      tableObjec.for49.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for49.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    } else if (getBackComputerStoVar == 56) {
-      let recentImg50 = document.getElementById("forImgFifty");
-      recentImg50.style.display = "none";
-      tableObjec.for50.style.background = `
-    url("cf/50.JPG")`;
-      tableObjec.for50.style.backgroundRepeat = `no-repeat`;
-      tableObjec.for50.style.backgroundSize = `100% 100%`;
-      tableObjec.forStart.style.justifyContent = `center`; 
-    }
   currentColorIndex = (currentColorIndex + 1) % colors.length;
 };
 
@@ -3234,6 +2821,24 @@ setTimeout(() => {
       confirmAnsObj.feedBack = true;
       $(".d-none1").toggle();
 }, 150000);
+
+// document.addEventListener("keydown", function(event) {
+//   if (event.keyCode === 32) { // Spacebar pressed
+//     const targetElement = event.target;
+//     if (targetElement.tagName === "TD" || targetElement.id === "someOtherElement") {
+//       // Call your function if the target is a <td> or another specific element
+//       doSomethingOnSpacebar(targetElement);
+//     }
+//   }
+// });
+
+// function doSomethingOnSpacebar(cell) {
+//   // Perform actions related to the spacebar press within the cell
+//   alert("do something")
+//   console.log("Spacebar pressed in cell:", cell.textContent);
+//   // Add your specific actions here
+// }
+
 // This below function is use to check if the option selected is correct
 const modalTrigFun = () => {
   if (myTurn === true) {
@@ -4285,10 +3890,35 @@ const getSelectedOption = (coming) => {
     } else {
       alert("No option selected. Please choose an option.");
     }
+  }else if (coming === 51) {
+    if (myTurn == true) {
+      //computerTurn = true;
+      $("#modal50").modal("hide");
+      myTurn = true;
+      firstToWinClap.play();
+      alert("You Won");
+      confirmAnsObj.modalshow50 = false;
+      restart = confirm("Do you want to restart or continue? Press 'OK' to continue and 'CANCEL' to restart");
+      if(restart){
+        myTurnToSaveSessi = 0;
+        setMySessStorFunc()
+        retriveMySessStorFunc()
+        blinkBackground()
+        var pScoreTwo = document.getElementById("pTwoScore");
+        var currentPTwoScoreValue = parseInt(pScoreTwo.innerText, 10);
+        if(pTwoScore.innerText == 0 || pTwoScore.innerText > 0){
+          pScoreTwo.innerText = currentPTwoScoreValue + 1
+        }
+        document.getElementById("gameContent").classList.add('d-none') 
+        document.getElementById("gameContent").classList.remove('d-none')
+    }else {
+        window.location.reload();
+      }
   }
-  playerSigner()
-  blinkBackground()
 };
+playerSigner()
+blinkBackground()
+}
 
 const forEntr = (e) => {
   console.log(e);
@@ -4299,13 +3929,17 @@ const forEntr = (e) => {
 
 var correctAnswer;
 var diceActive = true
+var plusOne = 0;
 const rolDicePlayerOne = () => {
+  // setMySessStorFunc() /////
   beforeBlinkBackground()
   clearRadioButtons()
-  if ((myTurn === true) && (diceActive == true)) {
+  if (myTurn === true && diceActive === true) {
     diceActive = false;
+    plusOne += 1
+    console.log(plusOne);
+    // Handle the event after the modal is shown
     $(".modalStarter").on("hidden.bs.modal", function (e) {
-      // Handle the event after the modal is shown
       dispDiceHole.focus();
     });
     // This section is use to focus back on hole when reload
@@ -4331,28 +3965,7 @@ const rolDicePlayerOne = () => {
       ((myTurnToSaveSessi == 55) && (diceRandNoPlayerOne == 1 || 2 || 3 || 4 || 5 || 6))
     ) {
       myTurnToSaveSessi = 56;
-      setMySessStorFunc();
-      retriveMySessStorFunc();
-      modalTrigFun()
-      blinkBackground()
-      firstToWinClap.play();
-      dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice_ass/dice-rest-state.JPG'>`;
-      alert(firstPersonPlaying + " Won");
-      restart = confirm("Do you want to restart or continue? Press 'OK' to continue and 'CANCEL' to restart");
-      if(restart){
-        myTurnToSaveSessi = 0;
-        beforeBlinkBackground()
-        var pScoreTwo = document.getElementById("pTwoScore");
-        var currentPTwoScoreValue = parseInt(pScoreTwo.innerText, 10);
-        if(pTwoScore.innerText == 0 || pTwoScore.innerText > 0){
-          pScoreTwo.innerText = currentPTwoScoreValue + 1
-        }
-        document.getElementById("gameContent").classList.add('d-none') 
-        document.getElementById("gameContent").classList.remove('d-none')
     //dispDiceRolOne.innerHTML = `<img style="width: 100%; height:15vh;" src='./cf/dice-rest-state.JPG'>`;
-      } else {
-        window.location.reload();
-      }
     } else if (diceRandNoPlayerOne == 6 && myTurnToSaveSessi == 0) {
       myTurnToSaveSessi = diceRandNoPlayerOne;
     } else if (myTurnToSaveSessi >= 6) {
@@ -4364,16 +3977,23 @@ const rolDicePlayerOne = () => {
     retriveComputerSessStorFunc();
     // getBackComputerStoVar = globeChangNum;
     // console.log(getBackComputerStoVar);
-    if(restart){
-      restart = false;
-    }else{
+    // if(restart){
+      // restart = false;
+    //   setTimeout(function () {
+    //     // ifSixLuck()
+    //     dispLuck();
+    //     modalTrigFun();
+    //     diceSound.pause();
+    //   }, 800);
+    // }
+    // else{
       setTimeout(function () {
         // ifSixLuck()
         dispLuck();
         modalTrigFun();
         diceSound.pause();
       }, 800);
-    }
+    // }
   }
 };
 </script>
