@@ -1262,11 +1262,14 @@
                 <a id="email" href="mailto:fajinmijoel11@gmail.com" class="text-decoration-none fw-bold">fajinmijoel11@gmail.com</a>
               </div>
               <form id="myForm" action="mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=" class="col-xs-7 col-lg-6">
-                <input type="text" placeholder="Your name" class="col-11 p-2" required>
-                <input type="email" placeholder="Your email" class="col-11 p-2 mt-3">
-                <textarea rows="4" cols="50" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
+                <input type="text" placeholder="Your name" class="col-11 p-2" required id="user-name">
+                <!-- <input type="email" placeholder="Your email" class="col-11 p-2 mt-3"> -->
+                <textarea rows="6" cols="80" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
                 <input type="hidden" name="subject" id="subject">
-                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3 form-control" data-bs-dismiss="modal" type="submit" value="Enter to Continue">
+                <div class="d-flex mt-3 justify-content-between">
+                  <input id="btn-continue" class="btn btn-success contine-focus " data-bs-dismiss="modal" type="submit" value="Send">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Skip</button>
+                </div>
               </form>
             </div>
           </section>
@@ -1290,7 +1293,6 @@ playerSelect.addEventListener('change', function() {
     // resultMessage.textContent = 'You selected Two Players mode.';
     var firstPName = prompt("First player name")
     var secondPName = prompt("Second player name")
-
     if(firstPName === null){
       firstPersonPlaying = "PLAYER ONE"
     }else if(firstPName === ""){

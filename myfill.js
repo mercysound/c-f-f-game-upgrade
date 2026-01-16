@@ -18,15 +18,19 @@ function clearRadioButtons() {
 // method for for feedback
 const textarea = document.getElementById("textarea-view");
 const subjectInput = document.getElementById("subject");
+const userInput = document.getElementById("user-name");
 
 textarea.addEventListener("input", () => {
   subjectInput.value = textarea.value.trim(); // Trim leading/trailing spaces
 });
 
 document.getElementById("myForm").addEventListener("submit", (event) => {
-  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with "+"
+  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with " "
+  // subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with " "
   event.preventDefault(); // Prevent default form submission
-  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
+  // window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
+  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}&body=Name:%20${userInput.value}`;
+
 });
 
 // Function to check device orientation
@@ -107,6 +111,8 @@ function startGame() {
   document.getElementById("dashboard").style.display = "none"
   document.getElementById("gameContent").classList.remove('d-none')
   gameBoardLoad()
+  //this is func that pop the user feedback
+  userExperiencePopUp()
 }
 
 
@@ -1929,13 +1935,16 @@ var tableObjec = {
   for50: document.getElementById("for50"),
 };
 
+
 // func that popup feedback modal
-setTimeout(() => {
-  allModalComputer.feedBack.show();
-      // trigClose();
-      confirmAnsObj.feedBack = true;
-      $(".d-none1").toggle();
-}, 150000);
+const userExperiencePopUp = ()=>{
+  setTimeout(() => {
+    allModalComputer.feedBack.show();
+        // trigClose();
+        confirmAnsObj.feedBack = true;
+        $(".d-none1").toggle();
+  }, 250000);
+}
 
 // This below function is use to check if the option selected is correct
 const modalTrigFun = () => {

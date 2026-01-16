@@ -1142,11 +1142,14 @@
                 <a id="email" href="mailto:fajinmijoel11@gmail.com" class="text-decoration-none fw-bold">fajinmijoel11@gmail.com</a>
               </div>
               <form id="myForm" action="mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=" class="col-xs-7 col-lg-6">
-                <input type="text" placeholder="Your name" class="col-11 p-2" required>
-                <input type="email" placeholder="Your email" class="col-11 p-2 mt-3">
-                <textarea rows="4" cols="50" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
+                <input type="text" placeholder="Your name" class="col-11 p-2" required id="user-name">
+                <!-- <input type="email" placeholder="Your email" class="col-11 p-2 mt-3"> -->
+                <textarea rows="6" cols="80" type="text" placeholder="Your view" class="col-11 p-2 mt-3 h-25" id="textarea-view"></textarea>
                 <input type="hidden" name="subject" id="subject">
-                <input id="btn-continue" class="btn btn-outline-success contine-focus mt-3 form-control" data-bs-dismiss="modal" type="submit" value="Enter to Continue">
+                <div class="d-flex mt-3 justify-content-between">
+                  <input id="btn-continue" class="btn btn-success contine-focus " data-bs-dismiss="modal" type="submit" value="Send">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Skip</button>
+                </div>
               </form>
             </div>
           </section>
@@ -1208,15 +1211,19 @@ function clearRadioButtons() {
 // method for for feedback
 const textarea = document.getElementById("textarea-view");
 const subjectInput = document.getElementById("subject");
+const userInput = document.getElementById("user-name");
 
 textarea.addEventListener("input", () => {
   subjectInput.value = textarea.value.trim(); // Trim leading/trailing spaces
 });
 
 document.getElementById("myForm").addEventListener("submit", (event) => {
-  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with "+"
+  subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with " "
+  // subjectInput.value = subjectInput.value.replace(/\s/g, ' '); // Encode spaces with " "
   event.preventDefault(); // Prevent default form submission
-  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
+  // window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}`;
+  window.location.href = `mailto:adewoleadekunlemercy@gmail.com,fajinmijoel11@gmail.com?subject=${subjectInput.value}&body=Name:%20${userInput.value}`;
+
 });
 
 let dispDiceHole = $(".editable");
@@ -2815,12 +2822,14 @@ var tableObjec = {
 };
 
 // func that popup feedback modal
-setTimeout(() => {
-  allModalComputer.feedBack.show();
-      // trigClose();
-      confirmAnsObj.feedBack = true;
-      $(".d-none1").toggle();
-}, 150000);
+const userExperiencePopUp = ()=>{
+  setTimeout(() => {
+    allModalComputer.feedBack.show();
+        // trigClose();
+        confirmAnsObj.feedBack = true;
+        $(".d-none1").toggle();
+  }, 200000);
+}
 
 // document.addEventListener("keydown", function(event) {
 //   if (event.keyCode === 32) { // Spacebar pressed
@@ -3996,6 +4005,8 @@ const rolDicePlayerOne = () => {
     // }
   }
 };
+
+userExperiencePopUp()//this is func that pop the user feedback
 </script>
 
 </body>
